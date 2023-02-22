@@ -1,0 +1,114 @@
+
+<div class="container mt-3">
+  <h2>Danh sách sản phẩm</h2>
+  <p>mlem mlem </p>
+  <br>
+  <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myModal">Create</button>
+
+  <br>
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Img</th>
+      <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let p of products">
+      <td>{{p.id}}</td>
+      <td>{{p.name}}</td>
+      <td><img src="{{p.img}}" width="200" height="200"></td>
+      <td>{{p.price}}</td>
+      <td><button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#myModalEdit" (click)="showEdit(p)">Edit</button></td>
+      <td><button type="button" class="btn btn-danger" (click)="deleteProduct(p)">Delete</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Create Product</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="mb-3 mt-3">
+          <label for="id">ID:</label>
+          <input type="text" class="form-control" id="id" placeholder="Enter id" name="id" [(ngModel)]="product.id">
+        </div>
+        <div class="mb-3">
+          <label for="name">Name:</label>
+          <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" [(ngModel)]="product.name">
+        </div>
+        <div class="mb-3">
+          <label for="img">Img:</label>
+          <input type="text" class="form-control" id="img" placeholder="Enter img" name="img" [(ngModel)]="product.img">
+        </div>
+        <div class="mb-3">
+          <label for="price">Price:</label>
+          <input type="text" class="form-control" id="price" placeholder="Enter price" name="price" [(ngModel)]="product.price">
+        </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="createProduct()">Submit</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- The Modal Edit-->
+
+<div class="modal" id="myModalEdit">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Product</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="mb-3 mt-3">
+          <label for="id">ID:</label>
+          <input type="text" class="form-control" id="idEdit" placeholder="Enter id" name="id" [(ngModel)]="product.id">
+        </div>
+        <div class="mb-3">
+          <label for="name">Name:</label>
+          <input type="text" class="form-control" id="nameEdit" placeholder="Enter name" name="name" [(ngModel)]="product.name">
+        </div>
+        <div class="mb-3">
+          <label for="img">Img:</label>
+          <input type="text" class="form-control" id="imgEdit" placeholder="Enter img" name="img" [(ngModel)]="product.img">
+        </div>
+        <div class="mb-3">
+          <label for="price">Price:</label>
+          <input type="text" class="form-control" id="priceEdit" placeholder="Enter price" name="price" [(ngModel)]="product.price">
+        </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="editProduct(product)">Edit</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
